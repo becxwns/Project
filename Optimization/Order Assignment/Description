@@ -1,0 +1,114 @@
+GRASP-GA Hybrid Based Supply Chain Order Assignment Optimization
+
+Toy implementation of a real-world Inventory Routing Problem (IRP) based on the paper:
+
+Perez, C., Climent, L., Nicolo, G., Arbelaez, A., & Salido, M. A.
+A hybrid metaheuristic with learning for a real supply chain scheduling problem
+Engineering Applications of Artificial Intelligence, 2023.
+
+Overview
+
+This project is a toy implementation of a real industrial supply chain scheduling problem.
+
+The objective is to assign customer orders to feasible warehouses while minimizing:
+
+Transportation cost
+Extra production cost caused by inventory shortages
+
+The implementation reproduces the core logic of the paper using a simplified GRASP-based approach.
+
+Problem Description
+
+In real supply chain operations:
+
+Each order can only be assigned to a subset of feasible warehouses
+Warehouses have different inventory levels
+Transportation costs vary by warehouse
+Inventory shortages generate additional production costs
+
+Therefore, assigning orders only based on the nearest warehouse is not always optimal.
+
+This project models the trade-off between:
+
+Transportation efficiency
+Inventory availability
+Objective Function
+
+Minimize:
+
+Total Cost = Transportation Cost + Extra Production Cost
+
+Constraints
+Each order must be assigned to exactly one feasible warehouse
+Inventory can become negative
+Negative inventory means additional production is required
+Additional production generates shortage cost
+Implemented Logic
+1. Constraint-Based Order Prioritization
+
+Orders with:
+
+fewer feasible warehouses
+larger demand
+
+are processed first.
+
+This reflects the GRASP ordering logic from the original paper.
+
+2. Local Search
+
+For each order:
+
+evaluate all feasible warehouses
+compute:
+transportation cost
+inventory shortage cost
+choose the warehouse with minimum weighted cost
+3. Alpha Tuning
+
+The algorithm dynamically adjusts the balance between:
+
+transportation cost
+shortage cost
+
+depending on the current inventory situation.
+
+4. Inventory Update
+
+After assigning an order:
+
+warehouse inventory is updated
+future stock levels are adjusted
+
+This simulates real operational inventory flow.
+
+Technologies
+Python
+Greedy Randomized Adaptive Search Procedure (GRASP)
+Example Output
+O1 -> W1 | transport: 10 | shortage: 0
+O2 -> W3 | transport: 15 | shortage: 20
+...
+Key Takeaways
+
+Through this project, I learned:
+
+Supply chain optimization requires balancing multiple operational costs
+Inventory and transportation decisions should be integrated
+Large-scale operational problems require both:
+fast feasible solution generation
+diversified search strategies
+Future Improvements
+
+Possible extensions:
+
+Genetic Algorithm (GA) implementation
+Meta-learning parameter tuning
+Multi-echelon supply chain modeling
+Vehicle routing integration
+Stochastic demand simulation
+Reference
+
+Perez, C., Climent, L., Nicolo, G., Arbelaez, A., & Salido, M. A. (2023).
+A hybrid metaheuristic with learning for a real supply chain scheduling problem.
+Engineering Applications of Artificial Intelligence, 126, 107188.
