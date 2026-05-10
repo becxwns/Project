@@ -1,0 +1,7 @@
+## Limitations
+
+- The full Hybrid GRASP-GA algorithm was not implemented.
+- GA operations such as crossover, mutation, selection were not included.
+- Meta-learning parameter tuning was not implemented.
+- The dataset is a simplified toy instance, not the original industrial-scale dataset.
+- The implementation focuses on understanding operational decision logic rather than reproducing the full experimental results.
