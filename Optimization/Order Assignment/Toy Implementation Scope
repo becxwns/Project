@@ -1,0 +1,12 @@
+## Toy Implementation Scope
+
+This code does not fully reproduce the original Hybrid GRASP-GA algorithm.
+
+Instead, it implements the simplified core decision logic:
+
+1. Prioritize highly constrained orders
+2. Evaluate feasible warehouses for each order
+3. Calculate transportation cost and shortage cost
+4. Assign the order to the lowest-cost warehouse
+5. Update warehouse inventory after assignment
+6. Adjust alpha to balance transportation and inventory shortage costs
